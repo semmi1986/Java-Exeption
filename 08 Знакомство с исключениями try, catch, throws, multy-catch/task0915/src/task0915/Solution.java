@@ -3,6 +3,7 @@ package task0915;
 import java.io.CharConversionException;
 import java.io.IOException;
 import java.nio.file.FileSystemException;
+import java.util.concurrent.CancellationException;
 
 /* 
 Перехват выборочных исключений
@@ -33,11 +34,26 @@ public class Solution {
     public static StatelessBean BEAN = new StatelessBean();
 
     public static void main(String[] args) {
-        handleExceptions();
+        try {
+            handleExceptions();
+        }catch (FileSystemException e){
+            BEAN.log(e);
+        }
+
     }
 
-    public static void handleExceptions() {
-        BEAN.methodThrowExceptions();
+    public static void handleExceptions() throws FileSystemException {
+        try{
+            BEAN.methodThrowExceptions();
+        }catch (FileSystemException e){
+            BEAN.log(e);
+            throw e;
+        }catch (CharConversionException e){
+            BEAN.log(e);
+        }catch (IOException e){
+            BEAN.log(e);
+        }
+
     }
 
     public static class StatelessBean {

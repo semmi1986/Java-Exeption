@@ -44,9 +44,21 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        int id = Integer.parseInt(reader.readLine());
-        String name = reader.readLine();
+        HashMap<Integer , String > hm = new HashMap<>();
 
-        System.out.println("Id=" + id + " Name=" + name);
+        while (true){
+            try {
+                int id = Integer.parseInt(reader.readLine());
+                String name = reader.readLine();
+                hm.put(id, name);
+            }catch (Exception e){
+                break;
+            }
+        }
+
+        for (Map.Entry<Integer,String> pair: hm.entrySet()){
+            System.out.println(pair.getKey() + " " + pair.getValue());
+        }
+
     }
 }

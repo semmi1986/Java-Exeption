@@ -39,10 +39,32 @@ public class Solution {
 
         // Ввод строк
         ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             String line = reader.readLine();
             list.add(line.toLowerCase());
         }
+
+        int [] repeat = new int[alphabet.size()];
+
+        System.out.println(repeat.length);
+
+        for (String s: list){
+            for (int i = 0; i < alphabet.size(); i++) {
+                for (int j = 0; j < s.length(); j++) {
+                    if (alphabet.get(i).equals(s.charAt(j))){
+                        repeat[i] +=1;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < repeat.length; i++) {
+            System.out.println(alphabet.get(i) + " " + repeat[i]);
+        }
+
+
+
+
 
         // напишите тут ваш код
     }
